@@ -21,6 +21,7 @@ clone_or_pull() {
 }
 
 # Replace these with your actual repo URLs
+clone_or_pull https://github.com/Beysik/Beysik-Common.git Beysik-Common
 clone_or_pull https://github.com/Beysik/Beysik-YARP.git Beysik-YARP
 clone_or_pull https://github.com/Beysik/Beysik-UI.git Beysik-UI
 clone_or_pull https://github.com/your-org/Beysik-CartService.git Beysik-CartService
