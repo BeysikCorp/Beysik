@@ -7,7 +7,7 @@ in a linux/WSL instance, running `clone-repos.sh` to fetches latest repository v
 
 #### First Run 
 ```sh
-cd ~/Beysik
+cd ./Beysik
 chmod +x clone-repos.sh
 docker-compose up
 ```
