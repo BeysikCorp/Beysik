@@ -8,19 +8,19 @@ services:
 
   Beysik-CartService:
     build:
-      context: ./services/Beysik-CartService
+      context: ./services/Beysik-CartService/Beysik-CartService/Beysik-CartService
     ports:
       - "5001:5001"
 
   Beysik-PCService:
     build:
-      context: ./services/Beysik-PCService
+      context: ./services/Beysik-PCService/Beysik-PCService/Beysik-PCService
     ports:
       - "5002:5002"
 
   Beysik-OrderService:
     build:
-      context: ./services/Beysik-OrderService
+      context: ./services/Beysik-OrderService/Beysik-OrderService/Beysik-OrderService
     ports:
       - "5003:5003"
 
