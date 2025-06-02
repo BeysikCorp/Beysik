@@ -5,6 +5,7 @@ set -e  # Exit on error
 mkdir -p services
 cd services
 
+
 # Function to clone or pull a Git repo
 clone_or_pull() {
   local repo_url=$1
