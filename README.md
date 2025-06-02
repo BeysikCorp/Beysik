@@ -2,10 +2,10 @@
 
 Beysik is a Single-Page E-Commerce Web Application for BeysikCorp
 
-### Installation
+### Installation 🪛
 in a linux/WSL instance, running `clone-repos.sh` to fetches latest repository version and `docker-compose` for building and running the image
 
-### NOTE
+### NOTE ⚠️
 the `docker-compose` is currently in development and is unstable, you can test the APIs, Common Library, UI, and Reverse Proxy simultaneously
 
 #### First Run 
