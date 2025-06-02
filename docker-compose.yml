@@ -4,7 +4,7 @@ services:
     build:
       context: ./services/Beysik-UI
     ports:
-      - "5000:5000"
+      - "8001:8001"
 
   Beysik-CartService:
     build:
@@ -23,6 +23,31 @@ services:
       context: ./services/Beysik-OrderService
     ports:
       - "5003:5003"
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: beysik-rabbitmq
+    ports:
+      - "5672:5672"    # AMQP port
+      - "15672:15672"  # Management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  mongodb:
+    image: mongo:latest
+    container_name: beysik-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: ProductCatalog
+      MONGO_INITDB_COLLECTION: Products
+    volumes:
+      - mongodb_data:/data/db
 
   yarp-gateway:
     image: mcr.microsoft.com/dotnet/aspnet:8.0
