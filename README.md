@@ -15,3 +15,5 @@ chmod +x clone-repos.sh
 ./clone-repos.sh
 docker-compose up
 ```
+
+![Main Page](https://cdn.discordapp.com/attachments/1147094181320327191/1379097363850723508/main.png?ex=683f0001&is=683dae81&hm=d5b4f0df44fce114510e810daaf939b5c5e1c7d34f38602a8196233ec1ded4b8&)
