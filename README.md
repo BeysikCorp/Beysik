@@ -9,5 +9,6 @@ in a linux/WSL instance, running `clone-repos.sh` to fetches latest repository v
 ```sh
 cd ./Beysik
 chmod +x clone-repos.sh
+./clone-repos.sh
 docker-compose up
 ```
