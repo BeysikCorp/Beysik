@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  Beysik-UI:
+    build:
+      context: ./services/Beysik-UI
+    ports:
+      - "5000:5000"
+
+  Beysik-CartService:
+    build:
+      context: ./services/Beysik-CartService
+    ports:
+      - "5001:5001"
+
+  Beysik-PCService:
+    build:
+      context: ./services/Beysik-PCService
+    ports:
+      - "5002:5002"
+
+  Beysik-OrderService:
+    build:
+      context: ./services/Beysik-OrderService
+    ports:
+      - "5003:5003"
+
+  yarp-gateway:
+    image: mcr.microsoft.com/dotnet/aspnet:8.0
+    container_name: yarp-gateway
+    ports:
+      - "8000:80"
+    volumes:
+      - ./services/Beysi-YARP/appsettings.json:/app/appsettings.json
+    working_dir: /app
+    entrypoint: ["dotnet", "Yarp.ReverseProxy.dll"]
+    depends_on:
+      - Beysik-UI
+      - Beysik-CartService
+      - Beysik-PCService
+      - Beysik-OrderService
