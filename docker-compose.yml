@@ -1,26 +1,26 @@
 version: '3.8'
 services:
-  Beysik-UI:
+  beysik-ui:
     build:
       context: ./services/Beysik-UI
     ports:
       - "8001:8001"
 
-  Beysik-CartService:
+  beysik-cartservice:
     build:
-      context: ./services/Beysik-CartService/Beysik-CartService/Beysik-CartService
+      context: ./services/Beysik-CartService
     ports:
       - "5001:5001"
 
-  Beysik-PCService:
+  beysik-pcservice:
     build:
-      context: ./services/Beysik-PCService/Beysik-PCService/Beysik-PCService
+      context: ./services/Beysik-PCService
     ports:
       - "5002:5002"
 
-  Beysik-OrderService:
+  beysik-orderservice:
     build:
-      context: ./services/Beysik-OrderService/Beysik-OrderService/Beysik-OrderService
+      context: ./services/Beysik-OrderService
     ports:
       - "5003:5003"
 
@@ -55,11 +55,45 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./services/Beysi-YARP/appsettings.json:/app/appsettings.json
+      - ./services/Beysik-YARP/appsettings.json:/app/appsettings.json
     working_dir: /app
     entrypoint: ["dotnet", "Yarp.ReverseProxy.dll"]
     depends_on:
-      - Beysik-UI
-      - Beysik-CartService
-      - Beysik-PCService
-      - Beysik-OrderService
+      - beysik-cartservice
+      - beysik-pcservice
+      - beysik-orderservice
+
+  node-alpine-dev:
+    image: docker.io/library/node:18-alpine
+    container_name: node-alpine-dev
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: ["tail", "-f", "/dev/null"]
+
+  dotnet-dev:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: dotnet-dev
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+
+  node-dev:
+    image: docker.io/library/node:18
+    container_name: node-dev
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: ["tail", "-f", "/dev/null"]
+
+volumes:
+  rabbitmq_data:
+    driver: local
+  mongodb_data:
+    driver: local
